@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\zhoud\\.ohos\\config\\default_RouterDemo_IfYojRnBH2H6Ac1n2QVLN3LhzIvAXCZEKgPQL1cNVFg=.cer",
+          "storePassword": "0000001B6D4BEEC053AB42BB5C66F1C8AC8D1427A6ACEE5EFFCD008148BE50E8D3A14261BF4568897D1E20",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B7C04709B4DB0A50DF22EE423845EB6FAFCDB7C1BA664D7367F92FE534DA2BFC520EF93EB0659C0",
+          "profile": "C:\\Users\\zhoud\\.ohos\\config\\default_RouterDemo_IfYojRnBH2H6Ac1n2QVLN3LhzIvAXCZEKgPQL1cNVFg=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\zhoud\\.ohos\\config\\default_RouterDemo_IfYojRnBH2H6Ac1n2QVLN3LhzIvAXCZEKgPQL1cNVFg=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
