@@ -30,14 +30,14 @@ struct Index {
   }
 
   onDidBuild(): void {
-    this.startCountDown();
+    this.startCountDown(6);
+    this.autoToMainPage(10);
   }
 
-  private startCountDown() {
-    // 设置初始倒计时时间为6秒
-    globalThis.remainingSeconds = 6;
+  private startCountDown(remainingSeconds:number) {
+
     // 更新验证码按钮文本为剩余秒数
-    this.message = globalThis.remainingSeconds + 's';
+    this.message = remainingSeconds + 's';
 
     // 清除已存在的定时器
     clearInterval(globalThis.captchaTimerId);
@@ -46,16 +46,38 @@ struct Index {
     globalThis.captchaTimerId = setInterval(() => {
       console.log('==== 定时器执行：', this.message);
       // 减少一秒
-      globalThis.remainingSeconds--;
+      remainingSeconds--;
       // 更新验证码按钮文本
-      this.message = globalThis.remainingSeconds + 's';
+      this.message = remainingSeconds + 's';
 
       // 倒计时结束，恢复初始状态
-      if (globalThis.remainingSeconds <= 0) {
+      if (remainingSeconds <= 0) {
         this.message = 'skip';
         this.canClick = true;
         // 清除定时器
         clearInterval(globalThis.captchaTimerId);
+      }
+    }, 1000);
+  }
+
+  private autoToMainPage(remainingSeconds:number){
+    // 更新验证码按钮文本为剩余秒数
+    this.message = remainingSeconds + 's';
+
+    // 清除已存在的定时器
+    // clearInterval(captchaTimerId);
+
+    // 创建新的倒计时定时器
+    let captchaTimerId = setInterval(() => {
+      console.log('==== 定时器执行：', this.message);
+      // 减少一秒
+      remainingSeconds--;
+
+      // 倒计时结束，恢复初始状态
+      if (remainingSeconds <= 0) {
+        routerFunc();
+        // 清除定时器
+        clearInterval(captchaTimerId);
       }
     }, 1000);
   }
